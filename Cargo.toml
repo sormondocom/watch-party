@@ -1,0 +1,42 @@
+[package]
+name = "watch-party"
+version = "0.1.0"
+edition = "2021"
+description = "P2P encrypted watch party for physical media — trusted peers, PGP identity"
+license = "MIT"
+
+[[bin]]
+name = "watch-party"
+path = "src/main.rs"
+
+[dependencies]
+# async runtime
+tokio = { version = "1", features = ["full"] }
+
+# serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+bincode = "1"
+toml = "0.8"
+
+# crypto / identity
+pgp = "0.13"
+blake3 = "1"
+hmac = "0.12"
+sha2 = "0.10"
+
+# TUI
+ratatui = "0.26"
+crossterm = { version = "0.27", features = ["event-stream"] }
+futures = "0.3"
+
+# logging
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# error handling
+anyhow = "1"
+thiserror = "1"
+
+[dev-dependencies]
+tokio-test = "0.4"

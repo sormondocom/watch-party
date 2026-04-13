@@ -1,0 +1,25 @@
+# watch-party configuration
+# Copy this file and rename to watch-party.toml to use.
+# The .gitignore excludes *.watch-party.toml to prevent accidental key/config commits.
+
+[stream]
+chunk_duration_ms = 2000          # target chunk duration in milliseconds
+max_snap_delta_ms = 500           # max distance (ms) to snap to nearest keyframe
+keyframe_snap = true              # snap chunk boundaries to keyframes (recommended)
+
+[buffer]
+min_buffer_chunks = 5             # chunks to buffer before playback begins (~10s at default)
+max_buffer_chunks = 30            # max chunks to buffer ahead (~60s at default)
+
+[pregame]
+manifest_ack_deadline_ms = 10000          # how long to wait for ManifestAck from each peer
+capability_response_deadline_ms = 15000   # how long peers have to respond to CapabilityChallenge
+peer_join_window_ms = 30000               # how long to wait for all invited peers to connect
+
+[sync]
+sync_beacon_interval_ms = 5000    # how often to broadcast SyncBeacon
+max_drift_ms = 3000               # max drift before corrective action
+
+[media]
+media_hash_bytes = 10485760       # bytes to read for media identity hash (10MB default)
+allow_live_fallback = true        # if false, abort instead of degrading to live mode
